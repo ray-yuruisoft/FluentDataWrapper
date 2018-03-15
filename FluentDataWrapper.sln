@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Simple", "Simple\Simple.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentDataWrapper", "FluentDataWrapper\FluentDataWrapper.csproj", "{01C3D2A3-02EC-4D0C-815C-A169672F6B0E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FluentData", "FluentData\FluentData.csproj", "{562B5678-C589-4DF5-BEBB-9BA1CEE5BF76}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{01C3D2A3-02EC-4D0C-815C-A169672F6B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{01C3D2A3-02EC-4D0C-815C-A169672F6B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{01C3D2A3-02EC-4D0C-815C-A169672F6B0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{562B5678-C589-4DF5-BEBB-9BA1CEE5BF76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{562B5678-C589-4DF5-BEBB-9BA1CEE5BF76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{562B5678-C589-4DF5-BEBB-9BA1CEE5BF76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{562B5678-C589-4DF5-BEBB-9BA1CEE5BF76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

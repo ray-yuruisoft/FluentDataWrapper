@@ -12,7 +12,7 @@ namespace Simple
     {
         static void Main(string[] args)
         {
-            //var a = sum_shop_productPrice.sumOneMonth(new DateTime(2017, 12, 12));
+            //var a = sum_shop_productPrice.sumOneMonth(new DateTime(2018, 1, 12));
             //var b = sum_shop_productPrice.sumOneDay(new DateTime(2018, 1, 30));
 
             shop_productOrderData<shop_productOrderModle> shop_ProductOrderData = new shop_productOrderData<shop_productOrderModle>();
