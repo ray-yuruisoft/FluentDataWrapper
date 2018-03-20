@@ -40,6 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes.cs" />
+    <Compile Include="Command\DbCommandExtention.cs" />
+    <Compile Include="Command\Handlers\IQueryTypeHandler.cs" />
+    <Compile Include="Command\Handlers\QueryDicHandler.cs" />
+    <Compile Include="Command\Handlers\QueryHandler.cs" />
+    <Compile Include="Command\Reader\DataReader.cs" />
+    <Compile Include="Command\Reader\IDataReader.cs" />
+    <Compile Include="Core\ReflectionHelper.cs" />
     <Compile Include="FluentDataBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

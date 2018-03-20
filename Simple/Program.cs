@@ -1,5 +1,6 @@
 ﻿using FluentDataWrapper;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -12,19 +13,50 @@ namespace Simple
     {
         static void Main(string[] args)
         {
-            //var a = sum_shop_productPrice.sumOneMonth(new DateTime(2018, 1, 12));
-            //var b = sum_shop_productPrice.sumOneDay(new DateTime(2018, 1, 30));
 
-            shop_productOrderData<shop_productOrderModle> shop_ProductOrderData = new shop_productOrderData<shop_productOrderModle>();
-            var c = shop_ProductOrderData.Context().Select<shop_productOrderModle>("sysNo,agentSysNo,createTime").From("shop_productOrder").QueryMany();
-            shop_ProductOrderData.Context().Dispose();
-            var e = shop_ProductOrderData.SelectList("select sysno,agentSysNo,createTime from shop_productOrder");
-            var d = shop_ProductOrderData.Context().Sql("select sysno,agentSysNo,createTime from shop_productOrder").QueryMany<shop_productOrderModle>();
+            p_shareAwardsData<p_shareAwardsModel> p_ShareAwardsData = new p_shareAwardsData<p_shareAwardsModel>();
+
+            var testa = p_ShareAwardsData.Context().Sql("select * from p_shareAwards").QueryManyAsDictionary<p_shareAwardsModel, Dictionary<long,DateTime>>();
+
+            var testab = p_ShareAwardsData.Context().Sql("select count(*) from p_shareAwards").QueryMany<int>();
+
+
+            DateTime dateTime = new DateTime(2018, 2, 10);
+            DateTime dateTimeBefore = dateTime.AddDays(-15);
+
+            var shareAwarders = p_ShareAwardsData.SelectList(String.Format("select UID,SysNo,GameID,CreateTime from p_shareAwards where CreateTime between '{0}' and '{1}'", dateTimeBefore.ToString("yyyy-MM-dd HH:mm:ss.fff"), dateTime.ToString("yyyy-MM-dd HH:mm:ss.fff")));
+
+
+            //1)	同一天、同一人在2个及以上APP分享，且15天内的总分享次数大于等于15；
+
+
+            var exceptioners = new List<p_shareAwardsModel>();
+
+            //同一天在2个及以上APP分享
+            foreach (var item in (from a in shareAwarders
+                                  group a by new { a.CreateTime, a.UID }))
+            {//同一天,同一人
+
+
+                foreach (var bottom in item)
+                {
+
+
+                    var a = bottom;
+                }
+
+                //if (item.Count() >= 2)
+                //{
+                //    exceptioners.Add(shareAwarders.First(c => c.UID == item.First().UID));
+                //}
+            }
 
             Console.ReadKey();
         }
     }
 
+
+    #region sum_shop_productPrice
     public class sum_shop_productPrice
     {
 
@@ -190,7 +222,7 @@ namespace Simple
     {
         public static string connectionString = "mj_cardshop_statistics";
     }
-    
+
     public class shop_productOrderData<shop_productOrderModle> : FluentDataBase<shop_productOrderModle>
     {
         public override string connectionString => sharingData.connectionString;
@@ -603,6 +635,49 @@ namespace Simple
             method(source, objects, target);
         }
     }
+
+
+    #endregion
+
+
+    #region newPartnerExceptionDiscover
+
+    public class p_shareAwardsData<p_shareAwardsModel> : FluentDataBase<p_shareAwardsModel>
+    {
+        public override string connectionString => "newpartner_statistics";
+        public override string tableName => "p_shareAwards";
+    }
+
+
+
+    public class p_shareAwardsModel
+    {
+        [PrimaryKey]
+        public string SysNo { get; set; }
+
+        public int GameID { get; set; }
+
+        [KeyofDictionary]
+        public long UID { get; set; }
+
+        [ValueofDictionary]
+        public DateTime CreateTime { get; set; }
+
+    }
+
+
+
+    #endregion
+
+
+
+
+
+
+
+
+
+
 
 
 

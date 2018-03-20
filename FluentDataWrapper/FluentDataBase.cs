@@ -248,9 +248,4 @@ namespace FluentDataWrapper
         #endregion
 
     }
-
-    public class PrimaryKey : Attribute
-    {
-    }
-
 }
