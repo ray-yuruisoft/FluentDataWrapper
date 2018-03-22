@@ -48,6 +48,7 @@
     <Compile Include="Command\Reader\DataReader.cs" />
     <Compile Include="Command\Reader\IDataReader.cs" />
     <Compile Include="Core\ReflectionHelper.cs" />
+    <Compile Include="Extentions\ObjectCopy.cs" />
     <Compile Include="FluentDataBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
