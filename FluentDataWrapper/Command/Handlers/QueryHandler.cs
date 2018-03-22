@@ -6,7 +6,7 @@ using System.Data;
 namespace FluentDataWrapper
 {
     internal class QueryHandler<TEntity>
-    {//生成查询处理器
+    {
         private readonly DbCommandData _data;
         private readonly IQueryTypeHandler _typeHandler;
 
@@ -18,8 +18,7 @@ namespace FluentDataWrapper
 
         internal IDictionary ExecuteMany(dynamic key, dynamic value)
         {
-            var items = (IDictionary)_data.Context.Data.EntityFactory.Create(typeof(TEntity));
-
+            var items = (IDictionary)_data.Context.Data.EntityFactory.Create(typeof(TEntity));          
             PrepareDbCommand();
 
             var reader = new DataReader(_data.InnerCommand.ExecuteReader());

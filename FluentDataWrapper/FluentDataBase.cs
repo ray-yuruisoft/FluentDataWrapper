@@ -161,6 +161,7 @@ namespace FluentDataWrapper
                       .QueryMany<T>();
             }
         }
+
         public T SelectSingle(string sqlstr = null, params object[] parameters)
         {
             using (var context = _Context())
